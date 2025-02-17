@@ -9,8 +9,8 @@ import UIKit
 
 class ResultViewController: UIViewController {
     
-    let sentences = Sentences() // Создаем экземпляр класса
-
+    let sentences = Sentences() // Create an instance of the class
+    
     
     var selectedTranslatorType: String?
     var selectedPetType: String?
@@ -27,40 +27,42 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
         
         print("Received in ResultViewController -> Translator Type: \(selectedTranslatorType ?? "nil"), Pet Type: \(selectedPetType ?? "nil")")
-
+        
+        // Set the pet image based on the selected image name or use a default image
         if let imageName = selectedImageName {
             petImageView.image = UIImage(named: imageName)
         } else {
             let defaultImageName = selectedPetType == "dog" ? "Dog" : "Cat"
             petImageView.image = UIImage(named: defaultImageName)
         }
-
-
+        
+        // Display a random sentence based on selected types
         displayRandomSentence()
+        
         setupUI()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
-
-        // Скрываем только кастомный таб-бар
+        
+        // Hide custom tab bar when this view appears
         if let tabBarVC = tabBarController as? CustomTabBarController {
             tabBarVC.tabbarView.isHidden = true
         }
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
-
-        // Показываем кастомный таб-бар обратно при возврате
+        
+        // Show custom tab bar when leaving this view
         if let tabBarVC = tabBarController as? CustomTabBarController {
             tabBarVC.tabbarView.isHidden = false
         }
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
-        
+        // Navigate back to the previous view controller
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -95,23 +97,24 @@ class ResultViewController: UIViewController {
     private func displayRandomSentence() {
         var selectedSentences: [String] = []
         
-        if selectedTranslatorType == "pet" { // 👈 исправлено (раньше тут было human)
+        // Determine the sentences to display based on translator and pet type
+        if selectedTranslatorType == "pet" {
             if selectedPetType == "dog" {
                 selectedSentences = sentences.dogSentences
             } else if selectedPetType == "cat" {
                 selectedSentences = sentences.catSentences
             }
-        } else { // Теперь если selectedTranslatorType == "human", то показываем "животный язык"
+        } else { 
             if selectedPetType == "dog" {
                 selectedSentences = sentences.forDogSentences
             } else if selectedPetType == "cat" {
                 selectedSentences = sentences.forCatSentences
             }
         }
-
+        
         if let randomSentence = selectedSentences.randomElement() {
             messageLabel.text = randomSentence
         }
     }
-
+    
 }

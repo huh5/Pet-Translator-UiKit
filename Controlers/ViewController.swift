@@ -9,50 +9,60 @@ import UIKit
 import Lottie
 import AVFoundation
 
+
+
 class ViewController: UIViewController {
+    // Selected pet and translator type
     var selectedPetType: String = "dog"
     var selectedTranslatorType: String = "human"
     
     var lottieAnimationView: LottieAnimationView!
-    @IBOutlet weak var animalsView: UIView!
     
+    // UI Outlets
+    @IBOutlet weak var animalsView: UIView!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var animalsImageView: UIImageView!
-    
     @IBOutlet weak var stopRecordingButton: UIButton!
-    
     @IBOutlet weak var procesLabel: UILabel!
-    
     @IBOutlet weak var arrowSwapButton: UIButton!
     @IBOutlet weak var dogButton: UIButton!
     @IBOutlet weak var humanLabel: UILabel!
     @IBOutlet weak var catButton: UIButton!
     @IBOutlet weak var petLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         animalsImageView.image = UIImage(named: "Dog")
-
+        
         setupUI()
         setupAnimationView()
         tabBarController?.tabBar.isHidden = true
-
+        requestMicrophonePermission()
+        
         
     }
-    
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         setupUI()
-
+        
         tabBarController?.tabBar.isHidden = false
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkMicrophonePermission()
+    }
+    
+    // Stops the recording and navigates to ResultViewController
     @IBAction func stopRecordingButtonPressed(_ sender: Any) {
         print("Selected Translator Type: \(selectedTranslatorType)")
-           print("Selected Pet Type: \(selectedPetType)")
+        print("Selected Pet Type: \(selectedPetType)")
         
+        // Hide UI elements
         recordButton.isHidden = true
         stopRecordingButton.isHidden = true
         lottieAnimationView.isHidden = true
@@ -70,150 +80,154 @@ class ViewController: UIViewController {
             resultVC.selectedTranslatorType = self.selectedTranslatorType
             resultVC.selectedPetType = self.selectedPetType
             resultVC.selectedImageName = self.selectedPetType == "dog" ? "Dog" : "Cat"
-
+            
             
             print("Passing to ResultViewController -> Translator Type: \(resultVC.selectedTranslatorType ?? "nil"), Pet Type: \(resultVC.selectedPetType ?? "nil")")
-
-                       self.navigationController?.pushViewController(resultVC, animated: true)
-                       
-                       self.lottieAnimationView.stop()
+            
+            self.navigationController?.pushViewController(resultVC, animated: true)
+            
+            self.lottieAnimationView.stop()
             
         }
     }
-    @IBAction func recordButtonPressed(_ sender: Any) {
-        requestMicrophonePermission()
-        recordButton.isHidden = true
-           
-           // Показываем кнопку остановки записи
-           stopRecordingButton.isHidden = false
-           
-           // Создаём анимацию и показываем её
-           
-           lottieAnimationView.isHidden = false
-           lottieAnimationView.play()
-    }
     
+    // Starts recording animation
+    @IBAction func recordButtonPressed(_ sender: Any) {
+        recordButton.isHidden = true
+        
+        stopRecordingButton.isHidden = false
+        
+        // Create an animation and show it
+        lottieAnimationView.isHidden = false
+        lottieAnimationView.play()
+    }
+    // Selects a cat as the pet type
     @IBAction func catButtonPressed(_ sender: Any) {
         catButton.isHighlighted = false
         dogButton.isHighlighted = true
         animalsImageView.image = UIImage(named: "Cat")
         selectedPetType = "cat"
-      
+        
     }
+    // Selects a dog as the pet type
     @IBAction func dogButtonPressed(_ sender: Any) {
         dogButton.isHighlighted = false
         catButton.isHighlighted = true
         animalsImageView.image = UIImage(named: "Dog")
         selectedPetType = "dog"
     }
+    // Swaps translation direction (Human -> Pet or Pet -> Human)
     @IBAction func arrowSwapButtonPressed(_ sender: Any) {
         if selectedTranslatorType == "human" {
-              selectedTranslatorType = "pet"
-          } else {
-              selectedTranslatorType = "human"
-          }
-
-          // Обновляем текстовые метки
-          humanLabel.text = selectedTranslatorType.uppercased()
-          petLabel.text = selectedTranslatorType == "human" ? "PET" : "HUMAN"
-      }
-   
-    func setupUI(){
+            selectedTranslatorType = "pet"
+        } else {
+            selectedTranslatorType = "human"
+        }
         
+        // Update text labels
+        humanLabel.text = selectedTranslatorType.uppercased()
+        petLabel.text = selectedTranslatorType == "human" ? "PET" : "HUMAN"
+    }
+    // Sets up the UI appearance
+    func setupUI(){
         recordButton.isHidden = false
         stopRecordingButton.isHidden = true
         procesLabel.isHidden = true
-        animalsView.layer.cornerRadius = 10
         catButton.isHighlighted = true
         dogButton.isHighlighted = false
         animalsView.isHidden = false
         dogButton.isHidden = false
         catButton.isHidden = false
-//        recordButton.layer.shadowRadius = 10
-//        recordButton.layer.shadowPath
-     
-        recordButton.layer.shadowColor = UIColor.black.cgColor
-        recordButton.layer.shadowOpacity = 0.5 // Увеличиваем opacity для более явной тени
-        recordButton.layer.shadowOffset = CGSize(width: 1, height: 4)
-        recordButton.layer.shadowRadius = 10
         
-        stopRecordingButton.layer.shadowColor = UIColor.black.cgColor
-        stopRecordingButton.layer.shadowOpacity = 0.5 // Увеличиваем opacity для более явной тени
-        stopRecordingButton.layer.shadowOffset = CGSize(width: 1, height: 4)
-        stopRecordingButton.layer.shadowRadius = 10
+        animalsView.layer.cornerRadius = 10
         
-        animalsView.layer.shadowColor = UIColor.black.cgColor
-        animalsView.layer.shadowOpacity = 0.5 // Увеличиваем opacity для более явной тени
-        animalsView.layer.shadowOffset = CGSize(width: 1, height: 4)
-        animalsView.layer.shadowRadius = 10
+        // Adding shadows to buttons and views
+        applyShadow(to: recordButton)
+        applyShadow(to: stopRecordingButton)
+        applyShadow(to: animalsView)
     }
     
-//    func setupAnimationView(){
-////        lottieImage = .init(name: "Animation - 1739536959711")
-//////        self.lottieImage.frame = view.frame
-//////        self.lottieImage.contentMode = .scaleAspectFit
-//////        self.lottieImage.loopMode = .loop
-//////        self.lottieImage.animationSpeed = 1.0
-//////        view.addSubview(lottieImage)
-//////        self.lottieImage.play()
-//        
-//       
-//        self.lottieImage.loopMode = .loop
-//        self.lottieImage.animationSpeed = 1.0
-//        self.lottieImage.play()
-//        self.lottieImage.isHidden = true
-//
-//    }
+    // Adds shadow effect to UI elements
+    func applyShadow(to view: UIView) {
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowOffset = CGSize(width: 1, height: 4)
+        view.layer.shadowRadius = 10
+    }
+    // Sets up Lottie animation view
     func setupAnimationView() {
         lottieAnimationView = LottieAnimationView(name: "Animation - 1739536959711")
-           lottieAnimationView.translatesAutoresizingMaskIntoConstraints = false
-           lottieAnimationView.loopMode = .loop
-           lottieAnimationView.animationSpeed = 1.0
-           lottieAnimationView.play()
+        lottieAnimationView.translatesAutoresizingMaskIntoConstraints = false
+        lottieAnimationView.loopMode = .loop
+        lottieAnimationView.animationSpeed = 1.0
+        lottieAnimationView.play()
         lottieAnimationView.isHidden = true
-           // Добавляем анимацию на экран
-           view.addSubview(lottieAnimationView)
-
-           // Устанавливаем ограничения для анимации
-           NSLayoutConstraint.activate([
-               lottieAnimationView.centerXAnchor.constraint(equalTo: recordButton.centerXAnchor),
-               lottieAnimationView.centerYAnchor.constraint(equalTo: recordButton.centerYAnchor),
-               lottieAnimationView.widthAnchor.constraint(equalTo: recordButton.widthAnchor),
-               lottieAnimationView.heightAnchor.constraint(equalTo: recordButton.heightAnchor)
-           ])
-           
-           // Разрешаем взаимодействие с кнопкой через анимацию
-           lottieAnimationView.isUserInteractionEnabled = false
-         }
+        // Add animation on view
+        view.addSubview(lottieAnimationView)
+        
+        // Set animation restrictions
+        NSLayoutConstraint.activate([
+            lottieAnimationView.centerXAnchor.constraint(equalTo: recordButton.centerXAnchor),
+            lottieAnimationView.centerYAnchor.constraint(equalTo: recordButton.centerYAnchor),
+            lottieAnimationView.widthAnchor.constraint(equalTo: recordButton.widthAnchor),
+            lottieAnimationView.heightAnchor.constraint(equalTo: recordButton.heightAnchor)
+        ])
+        
+        // Allow interaction with the button through animation
+        lottieAnimationView.isUserInteractionEnabled = false
+    }
+    // Requests microphone access from the user
     func requestMicrophonePermission(){
         AVAudioSession.sharedInstance().requestRecordPermission { granted in
-            DispatchQueue.main.async{
-                if granted {
-                    print("Yes")
-                }else{
-                    print("No")
+            DispatchQueue.main.async {
+                self.recordButton.isEnabled = granted
+                self.recordButton.alpha = granted ? 1.0 : 0.5
+                if !granted {
                     self.showSettingsAlert()
                 }
             }
         }
     }
-    func showSettingsAlert(){
-        let alert = UIAlertController(
-            title: "Enable Microphone Access",
-            message: "Please allow acces to your microphone to use the app's features",
-            preferredStyle: .alert
-            )
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Settings", style: .default){_ in
-            if let url = URL(string: UIApplication.openSettingsURLString){
-                UIApplication.shared.open(url)
-            }
-        })
-        DispatchQueue.main.async{
-            if let topController = UIApplication.shared.windows.first?.rootViewController{
-                topController.present(alert, animated: true)
+    
+    // Checks microphone access and requests it if necessary
+    func checkMicrophonePermission() {
+        AVAudioSession.sharedInstance().requestRecordPermission { granted in
+            DispatchQueue.main.async {
+                self.recordButton.isEnabled = granted
+                self.recordButton.alpha = granted ? 1.0 : 0.5
+
+                if !granted {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.showSettingsAlert()
+                    }
+                }
             }
         }
     }
+    
+    // Shows an alert if microphone access is denied
+    func showSettingsAlert(){
+        let alert = UIAlertController(
+            title: "Enable Microphone Access",
+            message: "Please allow access to your microphone to use the app's features",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Settings", style: .default) { _ in
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url)
+            }
+            
+            // After returning to the application, we check access again
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.checkMicrophonePermission()
+            }
+        })
+        
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+        }
+    }
+
 }
 

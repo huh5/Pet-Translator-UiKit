@@ -16,10 +16,10 @@ class CustomTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.isHidden = true
+        self.tabBar.isHidden = true // Hide the default tab bar
         
         setView()
-        generateControllers()
+        generateControllers() // Initialize view controllers
         setupButtons()
     }
     
@@ -28,13 +28,14 @@ class CustomTabBarController: UITabBarController {
         let translatorVC = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         let clickerVC = storyboard.instantiateViewController(withIdentifier: "ClickerViewController") as! ClickerViewController
         
+        // Create view controllers with images and labels
         let home = generateViewController(image: UIImage(systemName: "message")!, vc: UINavigationController(rootViewController: translatorVC), tag: 0, label: "Translator")
         let settings = generateViewController(image: UIImage(systemName: "gearshape")!, vc: UINavigationController(rootViewController: clickerVC), tag: 1, label: "Clicker")
-
         
-        viewControllers = [home, settings]
+        
+        viewControllers = [home, settings] // Set the view controllers
     }
-
+    
     private func generateViewController(image: UIImage, vc: UIViewController, tag: Int, label: String) -> UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +56,7 @@ class CustomTabBarController: UITabBarController {
         
         return vc
     }
-
+    
     private func setView() {
         view.addSubview(tabbarView)
         tabbarView.backgroundColor = .white
@@ -68,7 +69,7 @@ class CustomTabBarController: UITabBarController {
         ])
         tabbarView.layer.cornerRadius = 15
     }
-
+    
     private func setupButtons() {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -95,19 +96,19 @@ class CustomTabBarController: UITabBarController {
             stackView.bottomAnchor.constraint(equalTo: tabbarView.bottomAnchor)
         ])
         
-        // Устанавливаем первую кнопку черной
+        // Set the first button as active
         buttons.first?.tintColor = .black
     }
-
+    
     @objc private func buttonTapped(sender: UIButton) {
         selectedIndex = sender.tag
         
-        // Меняем цвета всех кнопок на серый
+        // Reset all button colors to gray
         for button in buttons {
             button.tintColor = .gray
         }
         
-        // Выбираем черный для нажатой кнопки
+        // Highlight the selected button
         sender.tintColor = .black
     }
 }

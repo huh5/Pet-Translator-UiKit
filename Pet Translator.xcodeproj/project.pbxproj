@@ -7,15 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		997DF8502D5FB8F900131EA1 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DF84F2D5FB8F900131EA1 /* ResultViewController.swift */; };
+		997DF8522D62969100131EA1 /* Sentences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DF8512D62969100131EA1 /* Sentences.swift */; };
+		99BB6FAC2D5EA20B00264A11 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BB6FAB2D5EA20B00264A11 /* CustomTabBarController.swift */; };
+		99BB6FAE2D5EA30900264A11 /* ClickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BB6FAD2D5EA30900264A11 /* ClickerViewController.swift */; };
+		99BB6FB02D5F737200264A11 /* Animation - 1739536959711.json in Resources */ = {isa = PBXBuildFile; fileRef = 99BB6FAF2D5F737100264A11 /* Animation - 1739536959711.json */; };
 		99BBDBF22D5E48ED00A2D6F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BBDBF12D5E48ED00A2D6F1 /* AppDelegate.swift */; };
 		99BBDBF42D5E48ED00A2D6F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BBDBF32D5E48ED00A2D6F1 /* SceneDelegate.swift */; };
 		99BBDBF62D5E48ED00A2D6F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BBDBF52D5E48ED00A2D6F1 /* ViewController.swift */; };
 		99BBDBF92D5E48ED00A2D6F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99BBDBF72D5E48ED00A2D6F1 /* Main.storyboard */; };
 		99BBDBFB2D5E48F000A2D6F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99BBDBFA2D5E48F000A2D6F1 /* Assets.xcassets */; };
 		99BBDBFE2D5E48F000A2D6F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99BBDBFC2D5E48F000A2D6F1 /* LaunchScreen.storyboard */; };
+		99BBDC232D5E58BF00A2D6F1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BBDC222D5E58BF00A2D6F1 /* GradientView.swift */; };
+		99F26E3C2D5E7FB600F455D5 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 99F26E3B2D5E7FB600F455D5 /* Lottie */; };
+		99F26E3E2D5E7FB600F455D5 /* Lottie-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 99F26E3D2D5E7FB600F455D5 /* Lottie-Dynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		997DF84F2D5FB8F900131EA1 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		997DF8512D62969100131EA1 /* Sentences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentences.swift; sourceTree = "<group>"; };
+		99BB6FAB2D5EA20B00264A11 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		99BB6FAD2D5EA30900264A11 /* ClickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickerViewController.swift; sourceTree = "<group>"; };
+		99BB6FAF2D5F737100264A11 /* Animation - 1739536959711.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1739536959711.json"; sourceTree = "<group>"; };
 		99BBDBEE2D5E48ED00A2D6F1 /* Pet Translator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pet Translator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99BBDBF12D5E48ED00A2D6F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99BBDBF32D5E48ED00A2D6F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +37,7 @@
 		99BBDBFA2D5E48F000A2D6F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99BBDBFD2D5E48F000A2D6F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99BBDBFF2D5E48F000A2D6F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99BBDC222D5E58BF00A2D6F1 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,16 +45,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99F26E3C2D5E7FB600F455D5 /* Lottie in Frameworks */,
+				99F26E3E2D5E7FB600F455D5 /* Lottie-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		997DF8532D62975600131EA1 /* Controlers */ = {
+			isa = PBXGroup;
+			children = (
+				99BBDBF52D5E48ED00A2D6F1 /* ViewController.swift */,
+				99BB6FAD2D5EA30900264A11 /* ClickerViewController.swift */,
+				997DF84F2D5FB8F900131EA1 /* ResultViewController.swift */,
+				99BB6FAB2D5EA20B00264A11 /* CustomTabBarController.swift */,
+			);
+			path = Controlers;
+			sourceTree = "<group>";
+		};
 		99BBDBE52D5E48ED00A2D6F1 = {
 			isa = PBXGroup;
 			children = (
 				99BBDBF02D5E48ED00A2D6F1 /* Pet Translator */,
+				997DF8532D62975600131EA1 /* Controlers */,
+				99BBDC202D5E58A600A2D6F1 /* Model */,
+				99BBDC1F2D5E589300A2D6F1 /* View */,
 				99BBDBEF2D5E48ED00A2D6F1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,15 +86,39 @@
 		99BBDBF02D5E48ED00A2D6F1 /* Pet Translator */ = {
 			isa = PBXGroup;
 			children = (
-				99BBDBF12D5E48ED00A2D6F1 /* AppDelegate.swift */,
 				99BBDBF32D5E48ED00A2D6F1 /* SceneDelegate.swift */,
-				99BBDBF52D5E48ED00A2D6F1 /* ViewController.swift */,
-				99BBDBF72D5E48ED00A2D6F1 /* Main.storyboard */,
+				99BBDBF12D5E48ED00A2D6F1 /* AppDelegate.swift */,
 				99BBDBFA2D5E48F000A2D6F1 /* Assets.xcassets */,
-				99BBDBFC2D5E48F000A2D6F1 /* LaunchScreen.storyboard */,
 				99BBDBFF2D5E48F000A2D6F1 /* Info.plist */,
+				99BBDBFC2D5E48F000A2D6F1 /* LaunchScreen.storyboard */,
+				99BBDBF72D5E48ED00A2D6F1 /* Main.storyboard */,
 			);
 			path = "Pet Translator";
+			sourceTree = "<group>";
+		};
+		99BBDC1F2D5E589300A2D6F1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				99BBDC212D5E58B000A2D6F1 /* Gradient */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		99BBDC202D5E58A600A2D6F1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				99BB6FAF2D5F737100264A11 /* Animation - 1739536959711.json */,
+				997DF8512D62969100131EA1 /* Sentences.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		99BBDC212D5E58B000A2D6F1 /* Gradient */ = {
+			isa = PBXGroup;
+			children = (
+				99BBDC222D5E58BF00A2D6F1 /* GradientView.swift */,
+			);
+			path = Gradient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +137,10 @@
 			dependencies = (
 			);
 			name = "Pet Translator";
+			packageProductDependencies = (
+				99F26E3B2D5E7FB600F455D5 /* Lottie */,
+				99F26E3D2D5E7FB600F455D5 /* Lottie-Dynamic */,
+			);
 			productName = "Pet Translator";
 			productReference = 99BBDBEE2D5E48ED00A2D6F1 /* Pet Translator.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +169,9 @@
 				Base,
 			);
 			mainGroup = 99BBDBE52D5E48ED00A2D6F1;
+			packageReferences = (
+				99F26E3A2D5E7FB600F455D5 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 99BBDBEF2D5E48ED00A2D6F1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99BBDBFE2D5E48F000A2D6F1 /* LaunchScreen.storyboard in Resources */,
+				99BB6FB02D5F737200264A11 /* Animation - 1739536959711.json in Resources */,
 				99BBDBFB2D5E48F000A2D6F1 /* Assets.xcassets in Resources */,
 				99BBDBF92D5E48ED00A2D6F1 /* Main.storyboard in Resources */,
 			);
@@ -140,6 +202,11 @@
 			files = (
 				99BBDBF62D5E48ED00A2D6F1 /* ViewController.swift in Sources */,
 				99BBDBF22D5E48ED00A2D6F1 /* AppDelegate.swift in Sources */,
+				997DF8522D62969100131EA1 /* Sentences.swift in Sources */,
+				997DF8502D5FB8F900131EA1 /* ResultViewController.swift in Sources */,
+				99BB6FAC2D5EA20B00264A11 /* CustomTabBarController.swift in Sources */,
+				99BBDC232D5E58BF00A2D6F1 /* GradientView.swift in Sources */,
+				99BB6FAE2D5EA30900264A11 /* ClickerViewController.swift in Sources */,
 				99BBDBF42D5E48ED00A2D6F1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,11 +362,12 @@
 				DEVELOPMENT_TEAM = G32MTJ59JJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Pet Translator/Info.plist";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Please allow access to your microphone to use the app's features";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,9 +375,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tkch.Pet-Translator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -323,11 +395,12 @@
 				DEVELOPMENT_TEAM = G32MTJ59JJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Pet Translator/Info.plist";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Please allow access to your microphone to use the app's features";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,9 +408,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tkch.Pet-Translator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -363,6 +440,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		99F26E3A2D5E7FB600F455D5 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		99F26E3B2D5E7FB600F455D5 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99F26E3A2D5E7FB600F455D5 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		99F26E3D2D5E7FB600F455D5 /* Lottie-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99F26E3A2D5E7FB600F455D5 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = "Lottie-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 99BBDBE62D5E48ED00A2D6F1 /* Project object */;
 }
